@@ -1,0 +1,186 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="templates\static\myapp\styles.css">
+</head>
+
+<body>
+    <h4 style="margin-left: 60px;">House Prediction🏠</h4>
+
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="whole-box">
+            <div class="first">
+
+                <input class="one" name="one" type="number" placeholder="enter the bedroom">
+                <input class="two" name="two" type="number" placeholder="enter the bathroom">
+                <input class="three" name="three" type="number" placeholder="enter the sqrl">
+                <input class="four" name="four" type="number" placeholder="enter the sqllot">
+                <input class="five" name="five" type="number" placeholder="enter the floor">
+
+            </div>
+
+
+            <div class="two">
+                <input class="six" name="six" type="text" placeholder="enter the water">
+                <input class="seven" name="seven" type="number" placeholder="enter the sqr above">
+                <input class="eight" name="eight" type="number" placeholder="enter the sqr base">
+                <input class="nine" name="nine" type="number" placeholder="enter the year built">
+                <input class="ten" name="ten" type="number" placeholder="enter the year renovation">
+
+            </div>
+
+
+
+
+        </div>
+        <div class="button">
+
+            <button type="submit">Predict</button>
+        </div>
+
+    </form>
+
+
+
+
+    {% if prediction %}
+    <div class="center">
+
+        <h2>Predicted Price: ${{ prediction|floatformat:2 }}</h2>
+    </div>
+    {% endif %}
+
+    <style>
+        body {
+            background-image: url("{% static 'frontend/images/kailash.jpg' %}");
+            background-size: cover;
+        }
+
+        .whole-box {
+            margin: 50px;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+
+
+
+
+
+
+
+
+        }
+
+        .first {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 10px;
+
+        }
+
+        .two {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 10px;
+
+
+        }
+
+        input {
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            color: black;
+            border-radius: 45px;
+            background-color: rgba(179, 179, 179, 0.66);
+
+
+
+
+
+        }
+
+        input:hover {
+            background-color: rgba(110, 108, 108, 0.442);
+        }
+
+        .center {
+            font-style: normal;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            color: rgb(74, 71, 71);
+            padding-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+
+
+        }
+
+        .button {
+            text-align: center;
+            padding: 20px;
+
+
+
+        }
+
+        button:hover {
+            background-color: rgb(255, 174, 0);
+        }
+
+        button {
+            border-radius: 20px;
+            width: 150px;
+            height: 45px;
+            background-color: rgb(232, 180, 84);
+
+        }
+    </style>
+
+
+    <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
