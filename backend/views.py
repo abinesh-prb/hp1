@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import os
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -25,7 +25,13 @@ class home(View):
             d6 = 1 if d6.lower() == "yes" else 0
 
 # Load dataset
-            df = pd.read_csv(r'frontend\static\data.csv')
+       
+
+           BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+           csv_path = os.path.join(BASE_DIR, 'frontend', 'static', 'data.csv')
+
+           df = pd.read_csv(csv_path)
+
 
 # Handle missing values (numeric only)
             df = df.select_dtypes(include=[np.number])
