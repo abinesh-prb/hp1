@@ -6,12 +6,18 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from django.views import View
+import os
+from django.conf import settings
+import pandas as pd  # assuming you're using pandas to load the CSV
+
 class home(View):
      def get(self, request):
          return render(request, "index.html", {"prediction": ""})
 
 
      def post(self, request): 
+            file_path = os.path.join(settings.BASE_DIR,'frontend', 'data', 'data.csv')  # make sure this line is indented with 4 spaces or a single tab
+            df = pd.read_csv(file_path)
             d1 = float(request.POST.get("one"))
             d2 = float(request.POST.get("two"))
             d3 = float(request.POST.get("three"))
@@ -20,17 +26,14 @@ class home(View):
             d6 = request.POST.get("six")
             d7 = float(request.POST.get("seven"))
             d8 = float(request.POST.get("eight"))
+
             d9 = float(request.POST.get("nine"))
             d10 = float(request.POST.get("ten"))
             d6 = 1 if d6.lower() == "yes" else 0
 
 # Load dataset
-       
+           
 
-           BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-           csv_path = os.path.join(BASE_DIR, 'frontend', 'static', 'data.csv')
-
-           df = pd.read_csv(csv_path)
 
 
 # Handle missing values (numeric only)
